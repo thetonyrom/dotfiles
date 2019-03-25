@@ -22,3 +22,6 @@ ln -sf $DOT_DIR/vimrc $HOME/.vimrc
 
 # polybar
 ln -snf $DOT_DIR/polybar $XDG_CONFIG_HOME/polybar
+
+# xprofile
+ln -sf $DOT_DIR/xprofile $HOME/.xprofile
