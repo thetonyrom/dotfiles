@@ -1,24 +1,77 @@
-! Base colors
-*.foreground:  #E1E1E1
-*.background:  #1c2023
-*.cursorColor: #778899
+!! Base colors
+!*.foreground:  #E1E1E1
+!*.background:  #1c2023
+!*.cursorColor: #778899
+!
+!*.color0:  #1c2023
+!*.color1:  #bf616a
+!*.color2:  #a3be8c
+!*.color3:  #ebcb8b
+!*.color4:  #8fa1b3
+!*.color5:  #b48ead
+!*.color6:  #96b5b4
+!*.color7:  #E1E1E1
+!*.color8:  #919ba0
+!*.color9:  #bf616a
+!*.color10: #a3be8c
+!*.color11: #ebcb8b
+!*.color12: #8fa1b3
+!*.color13: #b48ead
+!*.color14: #96b5b4
+!*.color15: #c0c5ce
 
-*.color0:  #1c2023
-*.color1:  #bf616a
-*.color2:  #a3be8c
-*.color3:  #ebcb8b
-*.color4:  #8fa1b3
-*.color5:  #b48ead
-*.color6:  #96b5b4
-*.color7:  #E1E1E1
-*.color8:  #919ba0
-*.color9:  #bf616a
-*.color10: #a3be8c
-*.color11: #ebcb8b
-*.color12: #8fa1b3
-*.color13: #b48ead
-*.color14: #96b5b4
-*.color15: #c0c5ce
+! Base16 Default Dark
+#define base00 #181818
+#define base01 #282828
+#define base02 #383838
+#define base03 #585858
+#define base04 #b8b8b8
+#define base05 #d8d8d8
+#define base06 #e8e8e8
+#define base07 #f8f8f8
+#define base08 #ab4642
+#define base09 #dc9656
+#define base0A #f7ca88
+#define base0B #a1b56c
+#define base0C #86c1b9
+#define base0D #7cafc2
+#define base0E #ba8baf
+#define base0F #a16946
+
+*foreground:   base05
+#ifdef background_opacity
+*background:   [background_opacity]base00
+#else
+*background:   base00
+#endif
+*cursorColor:  base05
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06
 
 ! Rofi
 rofi.font: monospace 17
@@ -27,8 +80,8 @@ rofi.line-padding: 2
 rofi.color-enabled: true
 rofi.hide-scrollbar: true
 rofi.separator-style: solid
-rofi.color-window: #1c2023, #919ba0, #1c2023
-rofi.color-normal: #1c2023, #919ba0, #1c2023, #a4a4a4, #1c2023
+rofi.color-window: #181818, #919ba0, #181818
+rofi.color-normal: #181818, #919ba0, #181818, #a4a4a4, #181818
 rofi.color-urgent: argb:00000000, #f43753, argb:00000000, argb:00000000, #e29a49
 rofi.color-active: argb:00000000, #49bbfb, argb:00000000, argb:00000000, #e29a49
 rofi.kb-cancel: Escape,Alt+F1
@@ -48,7 +101,7 @@ URxvt*saveline: 15000
 URxvt*termName: rxvt-256color
 URxvt*iso14755: false
 URxvt*depth: 32
-URxvt*background: [95]#1C2023
+URxvt*background: [95]#181818
 URxvt*scrollBar: false
 URxvt*scrollBar_right: false
 URxvt*internalBorder: 0
