@@ -19,3 +19,6 @@ ln -snf $DOT_DIR/nvim $XDG_CONFIG_HOME/nvim
 
 # vim
 ln -sf $DOT_DIR/vimrc $HOME/.vimrc
+
+# polybar
+ln -snf $DOT_DIR/polybar $XDG_CONFIG_HOME/polybar
