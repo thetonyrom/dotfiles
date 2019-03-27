@@ -25,3 +25,6 @@ ln -snf $DOT_DIR/polybar $XDG_CONFIG_HOME/polybar
 
 # xprofile
 ln -sf $DOT_DIR/xprofile $HOME/.xprofile
+
+# vconsole
+sudo ln -sf $DOT_DIR/vconsole.conf /etc/vconsole.conf
