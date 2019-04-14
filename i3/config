@@ -24,16 +24,6 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
-# border & title.. Must be set to border pixel for gaps to work
-for_window [class="^.*"] border pixel 0, title_format "%class => %title"
-
-# gaps
-gaps inner 7
-gaps outer 5
-
-# font
-font pango:monospace 11
-
 # $Mod = Super or Alt?
 set $Mod Mod4
 #set $Mod Mod1
@@ -249,6 +239,19 @@ default_orientation horizontal
 ######################################################
 ###############      Border & Gaps     ###############
 ######################################################
+
+# Titles
+#
+# border & title.. Must be set to border pixel for gaps to work
+for_window [class="^.*"] border pixel 0
+# font
+font pango:monospace 0
+
+# gaps
+# smart_gaps on
+
+gaps inner 13
+gaps outer 0
 
 new_window normal
 new_float  normal
