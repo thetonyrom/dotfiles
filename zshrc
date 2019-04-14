@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+export EDITOR=nvim
+
 # catch non-zsh and non-interactive shells
 [[ $- == *i* && $ZSH_VERSION ]] && SHELL=/usr/bin/zsh || return 0
 
