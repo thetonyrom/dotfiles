@@ -53,7 +53,7 @@ catch
 endtry
 
 if $TERM !=? 'linux'
-    set termguicolors
+    " set termguicolors
     " true colors in terminals (neovim doesn't need this)
     if !has('nvim') && !($TERM =~? 'xterm' || &term =~? 'xterm')
         let $TERM = 'xterm-256color'

@@ -16,8 +16,8 @@ set number             " enable line numbers
 set confirm            " ask confirmation like save before quit.
 set wildmenu           " Tab completion menu when using command mode
 set expandtab          " Tab key inserts spaces not tabs
-set softtabstop=4      " spaces to enter for each tab
-set shiftwidth=4       " amount of spaces for indentation
+set softtabstop=2      " spaces to enter for each tab
+set shiftwidth=2       " amount of spaces for indentation
 set shortmess+=aAcIws  " Hide or shorten certain messages
 
 let g:netrw_altv = 1
@@ -44,13 +44,19 @@ set linebreak breakindent
 set list listchars=tab:>>,trail:~
 
 " midnight, night, or day
-let g:jinx_theme = 'midnight'
+" let g:jinx_theme = 'midnight'
 
-try
-    colorscheme jinx
-catch
-    colorscheme slate
-endtry
+" try
+"     " colorscheme jinx
+"     colorscheme base16-default-dark
+" catch
+"     colorscheme slate
+" endtry
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256  " Access colors present in 256 colorspace
+  source ~/.vimrc_background
+endif
 
 if $TERM !=? 'linux'
     " set termguicolors
@@ -305,3 +311,95 @@ function! <SID>ranger()
     endfor
     redraw!
 endfunction
+
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+
+Plug 'w0rp/ale'
+
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+
+Plug 'tpope/vim-commentary'
+Plug 'edkolev/tmuxline.vim'
+call plug#end()
+
+" fzf
+nmap <C-p> :GFiles --exclude-standard --others --cached<CR>
+let g:fzf_layout = { 'down': '~30%' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+" hide statusline
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+map <C-n> :NERDTreeToggle<CR>
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+		" Currently, wombat, solarized, powerline, jellybeans, Tomorrow,
+		" Tomorrow_Night, Tomorrow_Night_Blue, Tomorrow_Night_Eighties,
+		" PaperColor, seoul256, landscape, one, darcula, molokai, materia,
+		" material, OldHope, nord, 16color and deus are available.
+		" The default value is:
+set noshowmode
+
+let g:tmuxline_powerline_separators = 0
+
+let g:lightline = {
+      \ 'colorscheme': 'deus',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'fileformat': 'LightlineFileformat',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'filetype': 'LightlineFiletype',
+      \ },
+      \ }
+
+function! LightlineFileformat()
+  return winwidth(0) > 80 ? &fileformat : ''
+endfunction
+
+function! LightlineFileencoding()
+  return winwidth(0) > 80 ? &fileencoding : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 80 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+" Write this in your vimrc file
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
