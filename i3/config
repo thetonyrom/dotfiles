@@ -183,8 +183,8 @@ bindsym $Mod+Shift+c reload
 bindsym $Mod+space floating toggle
 floating_modifier  Mod1
 
-bindsym $Mod+Shift+z move scratchpad
-bindsym $Mod+z scratchpad show
+bindsym $Mod+Shift+d move scratchpad
+bindsym $Mod+d scratchpad show
 
 # change focus
 bindsym $Mod+$left  focus left
