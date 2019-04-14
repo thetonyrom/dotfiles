@@ -17,7 +17,7 @@ set $base0E #ba8baf
 set $base0F #a16946
 
 # Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base00 $base00 $base04 $base0D $base0D
+client.focused          $base04 $base04 $base04 $base0D $base0D
 client.focused_inactive $base01 $base01 $base05 $base03 $base01
 client.unfocused        $base01 $base01 $base03 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
