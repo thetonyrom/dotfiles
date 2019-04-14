@@ -28,3 +28,6 @@ ln -sf $DOT_DIR/xprofile $HOME/.xprofile
 
 # vconsole
 sudo ln -sf $DOT_DIR/vconsole.conf /etc/vconsole.conf
+
+# tig
+ln -snf $DOT_DIR/tig $XDG_CONFIG_HOME/tig
